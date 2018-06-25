@@ -43,6 +43,17 @@ services:
     depends_on:
       - elasticsearch
 
+  nginx:
+    build:
+      context: nginx/
+    volumes:
+      - ./nginx/config:/etc/nginx/conf.d:ro
+    ports:
+      - "5600:5600"
+    networks:
+      - elk
+    depends_on:
+      - kibana
 networks:
 
   elk:
