@@ -16,15 +16,22 @@ docker-compose up -d
 mltest@mltest:~$ docker container ls
 CONTAINER ID  IMAGE                     COMMAND                  CREATED     STATUS        PORTS                                                                NAMES
 e092980bd703  dockerelk_logstash        "/usr/local/bin/dock…"   2 days ago  Up 20 hours   5044/tcp, 0.0.0.0:5002->5002/tcp, 9600/tcp, 0.0.0.0:6000->5000/tcp   dockerelk_logstash_1
+
 e3ca24a96b60  dockerelk_nginx           "nginx -g 'daemon of…"   9 days ago  Up 2 days     80/tcp, 0.0.0.0:5600->5600/tcp                                       dockerelk_nginx_1
+
 44ce669c0582  dockerelk_kibana          "/usr/local/bin/kiba…"   13 days ago Up 2 days     0.0.0.0:5601->5601/tcp                                               dockerelk_kibana_1
+
 00d4ead61446  dockerelk_elasticsearch   "/usr/local/bin/dock…"   13 days ago Up 2 days     0.0.0.0:9200->9200/tcp, 0.0.0.0:9300->9300/tcp                       dockerelk_elasticsearch_1
+
 
 
 문제시 로그 보기 
 docker logs dockerelk_logstash_1
+
 docker logs dockerelk_kibana_1
+
 docker logs dockerelk_elasticsearch_1
+
 docker logs dockerelk_nginx_1
 
 nginx는 로그인용도로 기본 ID/PW는 admin/kbrpa20181!
@@ -34,8 +41,11 @@ http://ip:5601 로그인 불필요
 
 config 변경 후 개별 서버 재기동 방법(전부 수행할 필요 없음)
 docker container restart dockerelk_logstash_1
+
 docker container restart dockerelk_kibana_1
+
 docker container restart dockerelk_elasticsearch_1
+
 docker container restart dockerelk_nginx_1
 
 
